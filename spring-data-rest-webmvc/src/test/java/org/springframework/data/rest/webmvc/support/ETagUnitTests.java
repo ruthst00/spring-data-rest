@@ -138,6 +138,29 @@ class ETagUnitTests {
 		assertThat(headers.getFirst("ETag")).isNull();
 	}
 
+	@Test // GH-xxxx
+	void wildcardETagVerifyNoneMatchThrowsWhenResourceExists() {
+
+		assertThatExceptionOfType(ETagDoesntMatchException.class) //
+				.isThrownBy(() -> ETag.WILDCARD_ETAG.verifyNoneMatch(context.getRequiredPersistentEntity(Sample.class),
+						new Sample(0L)));
+	}
+
+	@Test // GH-xxxx
+	void wildcardETagVerifyNoneMatchSucceedsWhenResourceDoesNotExist() {
+		ETag.WILDCARD_ETAG.verifyNoneMatch(context.getRequiredPersistentEntity(Sample.class), null);
+	}
+
+	@Test // GH-xxxx
+	void noETagVerifyNoneMatchDoesNotRejectExistingResource() {
+		ETag.NO_ETAG.verifyNoneMatch(context.getRequiredPersistentEntity(Sample.class), new Sample(0L));
+	}
+
+	@Test // GH-xxxx
+	void wildcardETagFromStringIsRecognized() {
+		assertThat(ETag.from("*")).isEqualTo(ETag.WILDCARD_ETAG);
+	}
+
 	// tag::versioned-sample[]
 	class Sample {
 
