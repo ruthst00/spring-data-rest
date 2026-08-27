@@ -73,6 +73,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Greg Turnquist
  * @author Jeremy Rickard
  * @author Jeroen Reijn
+ * @author Steve Rutherford
  */
 @RepositoryRestController
 class RepositoryEntityController

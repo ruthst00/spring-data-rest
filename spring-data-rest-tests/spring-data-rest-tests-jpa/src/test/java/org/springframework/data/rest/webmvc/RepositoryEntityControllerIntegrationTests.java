@@ -63,6 +63,7 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
  *
  * @author Oliver Gierke
  * @author Jeremy Rickard
+ * @author Steve Rutherford
  */
 @ContextConfiguration(classes = { ConfigurationCustomizer.class, JpaRepositoryConfig.class })
 @Transactional

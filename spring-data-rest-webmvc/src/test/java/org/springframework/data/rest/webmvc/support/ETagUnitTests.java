@@ -31,6 +31,7 @@ import org.springframework.http.HttpHeaders;
  *
  * @author Pablo Lozano
  * @author Oliver Gierke
+ * @author Steve Rutherford
  */
 @ExtendWith(MockitoExtension.class)
 class ETagUnitTests {
